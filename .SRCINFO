@@ -1,0 +1,6 @@
+pkgbase = sb
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+
+pkgname = sb
