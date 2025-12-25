@@ -1,7 +1,9 @@
 use std::error::Error;
 use std::{env, process,};
 
-use arboard::{Clipboard, SetExtLinux};
+#[cfg(target_os = "linux")]
+use arboard::SetExtLinux;
+use arboard::Clipboard;
 
 #[cfg(target_os = "linux")]
 const CLIPBOARD_DAEMON_SYMBOL: &str = "__clipboard_daemon_symbol__";
@@ -24,20 +26,24 @@ pub fn handle_clipboard_request() -> Result<(), arboard::Error>{
 }
 
 pub fn clipboard_copy(content: &str) -> Result<(), Box<dyn Error + Send + Sync>> {
-    if cfg!(not(target_os = "linux")) {
-        return Ok(Clipboard::new()?.set_text(content)?);
+    #[cfg(not(target_os = "linux"))]
+    {
+        Clipboard::new()?.set_text(content)?;
     }
 
-    process::Command::new(env::current_exe()?)
-		.args([
-            CLIPBOARD_DAEMON_SYMBOL,
-            content,
-        ])
-		.stdin(process::Stdio::null())
-		.stdout(process::Stdio::null())
-		.stderr(process::Stdio::null())
-		.current_dir("/")
-		.spawn()?;
+    #[cfg(target_os = "linux")]
+    {
+        process::Command::new(env::current_exe()?)
+	    	.args([
+                CLIPBOARD_DAEMON_SYMBOL,
+                content,
+            ])
+	    	.stdin(process::Stdio::null())
+	    	.stdout(process::Stdio::null())
+	    	.stderr(process::Stdio::null())
+	    	.current_dir("/")
+	    	.spawn()?;
+    }
 
     Ok(())
 }
