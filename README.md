@@ -9,15 +9,13 @@
 ### Motivation
 I forget things easily and a lot, the names of command-line utilities/tools are included. When I need one of them and only remember little part of its name, I have to google it or ask a LLM which is I don't like. After few times like this, I knew I need a solution and I started creating this tool. So this is a need for me, I hope it works for you either.
 
-
 ### How does this work?
 Simple, it just searches executables (or the way I call them: binaries) in directories which are part of PATH environment variable or a seperated paths argument given by you. Then it compares search input with the names of the binaries by similarity and displays them after ordering. For extra, it can extract descriptions from man pages for found binaries, with "**[man-db](https://man-db.gitlab.io/man-db/)**" and "**[groff](https://www.gnu.org/software/groff/groff.html)**" for displaying them too.
 
-
 ### Demo
 Just showing how does it look:
-![](demo.mp4)
 
+https://github.com/user-attachments/assets/de2becf1-41fb-4386-a2dd-f2e2f104f632
 
 #### The things are missing / should be fixed:
 1. Error handling (there is no error handling, really. I just ignored them 😊)
