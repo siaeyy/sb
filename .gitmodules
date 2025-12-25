@@ -1,0 +1,3 @@
+[submodule "pkgs/sb"]
+	path = pkgs/sb
+	url = ssh://aur@aur.archlinux.org/sb.git
