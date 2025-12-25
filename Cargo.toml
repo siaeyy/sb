@@ -1,0 +1,29 @@
+[package]
+name = "sb"
+version = "0.1.0"
+authors = ["siaeyy <siaeyy.one@gmail.com>"]
+description = "A command-line tool to search binaries in Unix-like systems"
+categories = ["command-line-tool"]
+repository = "https://github.com/siaeyy/sb"
+keywords = ["executable", "binary", "tool", "search"]
+license = "Apache-2.0 OR MIT"
+edition = "2024"
+
+[dependencies]
+clap = { version = "4.5.53", features = ["derive"] }
+arboard = "3.6.1"
+color-eyre = "0.6.5"
+flate2 = "1.1.5"
+ordered-float = "5.1.0"
+ratatui = "0.29.0"
+rayon = "1.11.0"
+strip-ansi-escapes = "0.2.1"
+strsim = "0.11.1"
+tui-input = "0.14.0"
+
+[profile.release]
+lto = true
+opt-level = 3
+codegen-units = 1
+debug = "line-tables-only"
+panic = "abort"
