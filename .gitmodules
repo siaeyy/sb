@@ -1,8 +1,10 @@
 [submodule "pkgs/sb"]
 	path = pkgs/sb
 	url = ssh://aur@aur.archlinux.org/sb.git
+	branch = mmaster
 	ignore = dirty
 [submodule "pkgs/sb-bin"]
 	path = pkgs/sb-bin
 	url = ssh://aur@aur.archlinux.org/sb-bin.git
+	branch = master
 	ignore = dirty
